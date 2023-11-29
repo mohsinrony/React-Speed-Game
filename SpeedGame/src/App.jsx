@@ -1,35 +1,60 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import NewGame from './components/NewGame'
+import { levels } from './levels'
 import './App.css'
+import Circle from './UI_components/Circle'
+import Game from './components/Game'
+import GameOver from './components/GameOver'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [player, setPlayer]= useState()
+  const [circles, setCircles] = useState([])
+  const [score, setScore] = useState(0)
+  const [gameOn, setGameOn] = useState(false)
+  const [gameOver, setGameOver] = useState(false)
+  const [gameLaunch, setGameLaunch] = useState(true)
+   
+  
+  
+   const gameSetHandler = (level,name) => {
+  
+    const levelIndex = levels.findIndex(el => el.name === level);
+
+    const levelAmount = levels[levelIndex].amount
+    
+
+    const criclesArray = Array.from({ length: levelAmount }, (x, i)=> i);
+  
+
+    setCircles(criclesArray)
+    setPlayer({
+    level: level,
+    name: name
+    })
+    setGameLaunch(!gameLaunch)
+    setGameOn(!gameOn)
+    
+    }
+      const stopHandler = () => {
+        setGameOn(!gameOn)
+        setGameOver(!gameOver)
+      }
+
+
+ 
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
+       <h1>Catch the snow!</h1>
+       
+    {gameLaunch && <NewGame onclick={gameSetHandler}/>}
+     {/* < {circles.map(el => <Circle/>)}> */}
+     {gameOn && <Game score={score} circles= {circles} stopHandler={stopHandler}/>}
+    { gameOver &&<GameOver/>}
     </>
   )
 }
 
-export default App
+export default App;
