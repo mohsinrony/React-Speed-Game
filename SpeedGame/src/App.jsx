@@ -16,7 +16,7 @@ function App() {
   const [gameLaunch, setGameLaunch] = useState(true)
   const [current, setCurrent] = useState(-1);
 
-  let timer;
+ 
   /* const timeoutIdRef = useRef(null)
   function randomNumb() {
     timoutIdRef.current = setTimeout(randomNumb, pace)
@@ -26,6 +26,7 @@ function App() {
     }
   }
   */
+  let timer;
   let pace = 1000;
    
   const getRndInt = (min, max) =>  {Math.floor(Math.random() * (max - min + 1) ) + min};
@@ -34,7 +35,7 @@ function App() {
   
     const levelIndex = levels.findIndex(el => el.name === level);
     const levelAmount = levels[levelIndex].amount
-    const criclesArray = Array.from({ length: levelAmount }, (x, i)=> i);
+    const criclesArray = Array.from({ length: levelAmount }, (_, i)=> i);
   
 
     setCircles(criclesArray)
