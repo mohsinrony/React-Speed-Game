@@ -1,3 +1,8 @@
+@font-face {
+  font-family: air-travelers-font;
+  src: url('./assets/air-travelers-font/AirtravelerspersonaluseBdit-gxgyE.otf');
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -5,14 +10,22 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* background-color: #242424; */
+  background-image: url('./assets/catch-snowflake-bg.jpeg');
+  background-position: center;
+  background-size: cover;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+h1 {
+  font-family: air-travelers-font;
+  background-color: blueviolet;
+  border-radius: 30px;
+  box-shadow: inset 1px 2px 3px;
+}
 
 body {
   margin: 0;
@@ -22,7 +35,10 @@ body {
   min-height: 100vh;
 }
 .gameBoard{
-  
+  padding: 20px;
+  background-color: blueviolet;
+  min-height: 300px;
+  border-radius: 30px;
 }
 .buttons {
   
@@ -30,19 +46,20 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   margin-top: 20px;
 }
 button {
-  background-color: aqua;
+  background-color: rgba(230, 166, 244, 0.5);
   height: 30px;
-  width: 100px;
+  width: 90px;
   border-radius: 30px;
   box-shadow: inset 1px 1px;
   color: #242424;
 }
 input {
   height: 30px;
+  width: 250px;
   padding-left: 12px;
   border: 1px solid lightgray;
   border-radius: 30px;

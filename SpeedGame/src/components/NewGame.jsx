@@ -13,8 +13,9 @@ function NewGame( { onclick } ) {
     setName(e.target.value)
   }
   return (<div className="gameBoard">
-    <h2>Start a game by choosing difficulty level and entering your name</h2>
+    <h2>Enter your name! </h2>
     <input type="text" onChange={inputHandler} placeholder="Type your name"/>
+    <p>Choose difficulty level to start!</p>
     <div className="buttons">
       <button onClick={()=> onclick('easy', name)}>Easy</button>
       <button onClick={()=> onclick('medium', name)}>Medium</button>
